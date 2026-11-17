@@ -12,6 +12,7 @@ def validate_jsonl(path: str | Path) -> list[str]:
     """Return validation errors for a JSONL chat dataset."""
     file_path = Path(path)
     errors: list[str] = []
+    record_count = 0
 
     if not file_path.exists():
         return [f"{file_path}: file does not exist"]
@@ -23,6 +24,7 @@ def validate_jsonl(path: str | Path) -> list[str]:
             for line_number, raw_line in enumerate(handle, start=1):
                 if not raw_line.strip():
                     continue
+                record_count += 1
                 try:
                     record = json.loads(raw_line)
                 except json.JSONDecodeError as exc:
@@ -72,4 +74,6 @@ def validate_jsonl(path: str | Path) -> list[str]:
     except OSError as exc:
         return [f"{file_path}: could not read file ({exc})"]
 
+    if record_count == 0:
+        errors.append(f"{file_path}: dataset contains no records")
     return errors
