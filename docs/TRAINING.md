@@ -18,7 +18,6 @@ Example Colab cells:
     !git clone https://github.com/huzeifaumar34/AFTERAI.git
     %cd AFTERAI
     !python -m pip install -e ".[training]"
-    !python -m pip install -e .
     !afterai validate-data data/examples/tiny_sample.jsonl
 
 The synthetic sample is only for checking the pipeline. It is far too small to produce a useful assistant.
