@@ -82,9 +82,6 @@ def main() -> None:
 
     dtype = torch.float16 if has_cuda else torch.float32
     model_kwargs = {"torch_dtype": dtype, "low_cpu_mem_usage": True}
-    if has_cuda:
-        model_kwargs["device_map"] = "auto"
-
     model = AutoModelForCausalLM.from_pretrained(args.model, **model_kwargs)
     model.config.use_cache = False
 
