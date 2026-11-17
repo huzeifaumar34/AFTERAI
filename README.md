@@ -30,6 +30,7 @@ The first candidate is [Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B): a 0
     ├── config/
     ├── data/
     ├── docs/
+    ├── notebooks/
     ├── scripts/
     ├── src/afterai/
     └── tests/
@@ -60,7 +61,7 @@ Replace the model ID only after reviewing the candidate's license, chat template
 
 Training is optional and is **not** run by the normal CI workflow. Use a free GPU notebook such as Google Colab when GPU access is available. Free GPU availability and session duration are limited and can change.
 
-See [docs/TRAINING.md](docs/TRAINING.md). The starter script uses supervised fine-tuning with LoRA and expects a JSONL dataset in the format described in [data/README.md](data/README.md). Do not upload private conversations, credentials, or personal data.
+Open the [AFTERAI Colab quickstart notebook](https://colab.research.google.com/github/huzeifaumar34/AFTERAI/blob/main/notebooks/AFTERAI_Colab_Quickstart.ipynb), or read [docs/TRAINING.md](docs/TRAINING.md). The notebook does not start training until you explicitly change its training switch. The starter script uses supervised fine-tuning with LoRA and expects a JSONL dataset in the format described in [data/README.md](data/README.md). Do not upload private conversations, credentials, or personal data.
 
 ## Principles
 
