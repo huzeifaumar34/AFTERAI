@@ -19,6 +19,10 @@ AFTERAI is not a renamed API wrapper. The repository owns the surrounding softwa
 
 The initial pretrained model is a replaceable dependency. Its license and usage conditions must be checked before distribution. Fine-tuning a model does not make its original architecture or base weights ours.
 
+## Initial base model
+
+The first candidate is [Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B): a 0.6B-parameter instruction model under Apache 2.0. We will measure its baseline before attempting fine-tuning. Model weights are not stored in this repository.
+
 ## Repository map
 
     .
@@ -48,9 +52,9 @@ On Termux, install Python and Git using the Termux package manager first. A virt
 Install the optional runtime dependencies on a machine or cloud notebook with enough RAM/VRAM:
 
     python -m pip install -e ".[runtime]"
-    afterai ask --model YOUR_APPROVED_MODEL_ID --prompt "Olá, AFTERAI"
+    afterai ask --model Qwen/Qwen3-0.6B --prompt "Olá, AFTERAI"
 
-Replace the placeholder with a model whose license, tokenizer chat template, and hardware needs you have checked. Model weights are downloaded when first used. This command is not intended to run large models on a low-memory phone.
+Replace the model ID only after reviewing the candidate's license, chat template, and hardware needs. Model weights are downloaded when first used. This command is not intended to run large models on a low-memory phone.
 
 ## Training
 
