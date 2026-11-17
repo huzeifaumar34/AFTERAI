@@ -2,6 +2,12 @@
 
 The Android phone is for editing, repository control, and small checks. Do not try to train a language model on the phone.
 
+## First baseline model
+
+The initial candidate is Qwen/Qwen3-0.6B. Its model card lists 0.6 billion parameters and an Apache 2.0 license. Use a recent Transformers release (4.51.0 or newer) because older releases do not recognize the Qwen3 model type.
+
+Review the current model card and its terms before use: https://huggingface.co/Qwen/Qwen3-0.6B
+
 ## Free-first workflow
 
 1. Open a Google Colab notebook in the browser.
@@ -24,11 +30,11 @@ The synthetic sample is only for checking the pipeline. It is far too small to p
 
 ## Start a LoRA experiment
 
-Choose a small causal language model whose license permits your intended use. Verify its model card, license, hardware needs, and tokenizer chat template before downloading it.
+The reviewed starter configuration uses Qwen/Qwen3-0.6B. Check the latest model card and available GPU memory before running:
 
-    !python scripts/train_lora.py --model YOUR_APPROVED_MODEL_ID --dataset data/your_reviewed_dataset.jsonl --output /content/afterai-lora-output --epochs 1
+    !python scripts/train_lora.py --model Qwen/Qwen3-0.6B --dataset data/your_reviewed_dataset.jsonl --output /content/afterai-lora-output --epochs 1
 
-Replace the placeholder with the exact model ID you reviewed. The script defaults to attention modules named q_proj,v_proj; some architectures use different names. Check the model architecture and pass --target-modules when necessary.
+The script defaults to LoRA attention modules named q_proj and v_proj, which must be confirmed against the selected model architecture before training.
 
 ## Important limits
 
