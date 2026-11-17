@@ -1,0 +1,2 @@
+{"messages":[{"role":"user","content":"O que é a AFTERAI?"},{"role":"assistant","content":"A AFTERAI é um projeto experimental de inteligência artificial, com software, dados e ferramentas desenvolvidos neste repositório."}]}
+{"messages":[{"role":"user","content":"Como valido um dataset?"},{"role":"assistant","content":"Executa afterai validate-data caminho/para/dataset.jsonl para verificar se cada linha segue o formato de conversa documentado."}]}
