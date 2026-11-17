@@ -8,7 +8,13 @@ The initial candidate is Qwen/Qwen3-0.6B. Its model card lists 0.6 billion param
 
 Review the current model card and its terms before use: https://huggingface.co/Qwen/Qwen3-0.6B
 
-## Free-first workflow
+## Open Colab on Android
+
+Open the [AFTERAI Colab quickstart notebook](https://colab.research.google.com/github/huzeifaumar34/AFTERAI/blob/main/notebooks/AFTERAI_Colab_Quickstart.ipynb). The notebook clones the repository, installs the optional dependencies, checks whether a GPU was assigned, and lets you upload one reviewed JSONL dataset.
+
+Training is disabled by default. Set RUN_TRAINING to True only after checking the dataset and GPU availability. The notebook also leaves adapter download disabled until you explicitly enable it.
+
+## Manual free-first workflow
 
 1. Open a Google Colab notebook in the browser.
 2. Select a GPU runtime only when one is offered. Free GPU access is not guaranteed.
