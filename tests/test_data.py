@@ -36,3 +36,11 @@ def test_rejects_invalid_json(tmp_path):
 def test_reports_missing_file(tmp_path):
     errors = validate_jsonl(tmp_path / "missing.jsonl")
     assert errors and "does not exist" in errors[0]
+
+
+def test_rejects_empty_dataset(tmp_path):
+    path = tmp_path / "empty.jsonl"
+    path.write_text("\n  \n", encoding="utf-8")
+
+    errors = validate_jsonl(path)
+    assert any("contains no records" in error for error in errors)
