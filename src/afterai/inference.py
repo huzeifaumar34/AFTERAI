@@ -29,7 +29,9 @@ def generate_reply(
     cuda_available = torch.cuda.is_available()
     if device == "cuda" and not cuda_available:
         raise RuntimeError("CUDA was requested, but no CUDA GPU is available.")
-    selected_device = "cuda" if device == "cuda" or (device == "auto" and cuda_available) else "cpu"
+    selected_device = (
+        "cuda" if device == "cuda" or (device == "auto" and cuda_available) else "cpu"
+    )
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     if not getattr(tokenizer, "chat_template", None):
@@ -53,13 +55,17 @@ def generate_reply(
         tokenize=True,
         add_generation_prompt=True,
         return_tensors="pt",
+        enable_thinking=False,
     ).to(selected_device)
 
     generation_options = {
         "input_ids": input_ids,
         "attention_mask": torch.ones_like(input_ids),
         "max_new_tokens": max_new_tokens,
-        "do_sample": False,
+        "do_sample": True,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
     }
     if tokenizer.pad_token_id is not None:
         generation_options["pad_token_id"] = tokenizer.pad_token_id
