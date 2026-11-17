@@ -1,5 +1,6 @@
 {
-  "base_model": "REPLACE_WITH_A_REVIEWED_MODEL_ID",
+  "base_model": "Qwen/Qwen3-0.6B",
+  "base_model_license": "Apache-2.0",
   "dataset": "data/your_reviewed_dataset.jsonl",
   "output": "outputs/afterai-lora",
   "epochs": 1,
@@ -11,5 +12,5 @@
   "lora_alpha": 16,
   "lora_dropout": 0.05,
   "target_modules": ["q_proj", "v_proj"],
-  "note": "Example only. Check model license, tokenizer template, module names and available GPU memory before training."
+  "note": "Example only. Check the model card, tokenizer template, module names and available GPU memory before training."
 }
