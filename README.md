@@ -4,7 +4,7 @@
 
 AFTERAI is being built with a phone-first workflow: Android/Termux for local editing, GitHub for source control and automation, and free cloud notebooks for occasional model experiments.
 
-> **Current status:** bootstrap / Phase 0. This repository does not contain a trained model yet. No paid cloud services are required or assumed.
+> **Current status:** bootstrap / early prototype. This repository has no trained or bundled model yet. No paid cloud services are required or assumed.
 
 ## Project goals
 
@@ -15,37 +15,42 @@ AFTERAI is being built with a phone-first workflow: Android/Termux for local edi
 
 ## What AFTERAI is — and is not
 
-AFTERAI is not a renamed API wrapper. The repository will own the surrounding software, data formats, training/evaluation code, memory and tool interfaces, and eventually experimental model weights if we can train them.
+AFTERAI is not a renamed API wrapper. The repository owns the surrounding software, data formats, training/evaluation code, model-loading interface, and eventually memory and tool interfaces.
 
 The initial pretrained model is a replaceable dependency. Its license and usage conditions must be checked before distribution. Fine-tuning a model does not make its original architecture or base weights ours.
 
 ## Repository map
 
-```text
-.
-├── .github/workflows/ci.yml    # CPU-only checks on GitHub Actions
-├── config/                     # Example settings
-├── data/                       # Dataset format and tiny synthetic example
-├── docs/                       # Architecture, roadmap and training guide
-├── scripts/                    # Dataset validation and LoRA training
-├── src/afterai/                # Python package and CLI
-└── tests/                      # Automated tests
-```
+    .
+    ├── .github/workflows/ci.yml
+    ├── config/
+    ├── data/
+    ├── docs/
+    ├── scripts/
+    ├── src/afterai/
+    └── tests/
 
 ## Quick start (Android / Linux)
 
 Python 3.10 or newer is recommended.
 
-```bash
-python -m venv .venv
-. .venv/bin/activate
-python -m pip install -e ".[dev]"
-afterai info
-afterai validate-data data/examples/tiny_sample.jsonl
-pytest
-```
+    python -m venv .venv
+    . .venv/bin/activate
+    python -m pip install -e ".[dev]"
+    afterai info
+    afterai validate-data data/examples/tiny_sample.jsonl
+    pytest
 
-On Termux, install Python and Git using the Termux package manager first. A virtual environment is recommended; the training dependencies are intentionally not installed by the normal development setup.
+On Termux, install Python and Git using the Termux package manager first. A virtual environment is recommended. Runtime and training dependencies are intentionally optional.
+
+## Run a model
+
+Install the optional runtime dependencies on a machine or cloud notebook with enough RAM/VRAM:
+
+    python -m pip install -e ".[runtime]"
+    afterai ask --model YOUR_APPROVED_MODEL_ID --prompt "Olá, AFTERAI"
+
+Replace the placeholder with a model whose license, tokenizer chat template, and hardware needs you have checked. Model weights are downloaded when first used. This command is not intended to run large models on a low-memory phone.
 
 ## Training
 
