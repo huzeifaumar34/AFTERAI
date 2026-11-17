@@ -10,8 +10,8 @@
 - [ ] Choose a base model after checking its license, size, tokenizer, and hardware needs.
 
 ## Phase 1 — baseline assistant
-- [ ] Add a documented model adapter for one selected base model.
-- [ ] Add a small inference command.
+- [x] Add a model-agnostic loading and single-prompt inference interface.
+- [ ] Select and document the first supported base model.
 - [ ] Create a hand-reviewed evaluation set in Portuguese and English.
 - [ ] Record baseline results before fine-tuning.
 
