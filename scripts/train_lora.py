@@ -92,6 +92,7 @@ def main() -> None:
             example["messages"],
             tokenize=False,
             add_generation_prompt=False,
+            enable_thinking=False,
         )
         return tokenizer(
             rendered,
